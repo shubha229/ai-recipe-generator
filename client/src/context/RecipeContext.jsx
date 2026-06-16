@@ -12,31 +12,37 @@ export const useRecipe = () => {
 };
 
 export const RecipeProvider = ({ children }) => {
-  const [ingredients,       setIngredients]       = useState([]);
-  const [recipe,            setRecipe]            = useState(null);
-  const [suggestions,       setSuggestions]       = useState([]);
-  const [savedRecipes,      setSavedRecipes]      = useState([]);
-  const [loading,           setLoading]           = useState(false);
-  const [error,             setError]             = useState(null);
+  const [ingredients, setIngredients] = useState([]);
+  const [recipe, setRecipe] = useState(null);
+  const [suggestions, setSuggestions] = useState([]);
+  const [savedRecipes, setSavedRecipes] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const [dietaryPreference, setDietaryPreference] = useState("");
 
-  const API_BASE = "/api/recipes";
+  // Render Backend URL
+  const API_BASE =
+    "https://smart-chef-backend-526n.onrender.com/api/recipes";
 
   const analyzeImage = useCallback(async (imageFile) => {
     setLoading(true);
     setError(null);
+
     try {
       const formData = new FormData();
       formData.append("image", imageFile);
 
       const { data } = await axios.post(`${API_BASE}/analyze`, formData, {
-        headers: { "Content-Type": "multipart/form-data" },
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
       });
 
       setIngredients(data.ingredients);
       return data.ingredients;
     } catch (err) {
-      const message = err.response?.data?.error || "Failed to analyze image";
+      const message =
+        err.response?.data?.error || "Failed to analyze image";
       setError(message);
       throw new Error(message);
     } finally {
@@ -48,6 +54,7 @@ export const RecipeProvider = ({ children }) => {
     async (ingredientList, diet) => {
       setLoading(true);
       setError(null);
+
       try {
         const { data } = await axios.post(`${API_BASE}/generate`, {
           ingredients: ingredientList || ingredients,
@@ -57,7 +64,8 @@ export const RecipeProvider = ({ children }) => {
         setRecipe(data.recipe);
         return data.recipe;
       } catch (err) {
-        const message = err.response?.data?.error || "Failed to generate recipe";
+        const message =
+          err.response?.data?.error || "Failed to generate recipe";
         setError(message);
         throw new Error(message);
       } finally {
@@ -71,6 +79,7 @@ export const RecipeProvider = ({ children }) => {
     async (ingredientList, diet) => {
       setLoading(true);
       setError(null);
+
       try {
         const { data } = await axios.post(`${API_BASE}/suggestions`, {
           ingredients: ingredientList || ingredients,
@@ -80,7 +89,8 @@ export const RecipeProvider = ({ children }) => {
         setSuggestions(data.suggestions);
         return data.suggestions;
       } catch (err) {
-        const message = err.response?.data?.error || "Failed to get suggestions";
+        const message =
+          err.response?.data?.error || "Failed to get suggestions";
         setError(message);
         throw new Error(message);
       } finally {
@@ -93,10 +103,12 @@ export const RecipeProvider = ({ children }) => {
   const saveRecipe = useCallback(async (recipeData) => {
     try {
       const { data } = await axios.post(`${API_BASE}/save`, recipeData);
+
       setSavedRecipes((prev) => [data, ...prev]);
       return data;
     } catch (err) {
-      const message = err.response?.data?.error || "Failed to save recipe";
+      const message =
+        err.response?.data?.error || "Failed to save recipe";
       setError(message);
       throw new Error(message);
     }
@@ -104,13 +116,19 @@ export const RecipeProvider = ({ children }) => {
 
   const fetchSavedRecipes = useCallback(async (filters = {}) => {
     setLoading(true);
+
     try {
       const params = new URLSearchParams(filters).toString();
-      const { data } = await axios.get(`${API_BASE}/saved?${params}`);
+
+      const { data } = await axios.get(
+        `${API_BASE}/saved?${params}`
+      );
+
       setSavedRecipes(data);
       return data;
     } catch (err) {
-      const message = err.response?.data?.error || "Failed to fetch recipes";
+      const message =
+        err.response?.data?.error || "Failed to fetch recipes";
       setError(message);
       throw new Error(message);
     } finally {
@@ -121,9 +139,13 @@ export const RecipeProvider = ({ children }) => {
   const deleteSavedRecipe = useCallback(async (id) => {
     try {
       await axios.delete(`${API_BASE}/saved/${id}`);
-      setSavedRecipes((prev) => prev.filter((r) => r._id !== id));
+
+      setSavedRecipes((prev) =>
+        prev.filter((recipe) => recipe._id !== id)
+      );
     } catch (err) {
-      const message = err.response?.data?.error || "Failed to delete recipe";
+      const message =
+        err.response?.data?.error || "Failed to delete recipe";
       setError(message);
       throw new Error(message);
     }
@@ -136,13 +158,17 @@ export const RecipeProvider = ({ children }) => {
   }, []);
 
   const value = {
-    ingredients, setIngredients,
-    recipe, setRecipe,
+    ingredients,
+    setIngredients,
+    recipe,
+    setRecipe,
     suggestions,
     savedRecipes,
     loading,
-    error, setError,
-    dietaryPreference, setDietaryPreference,
+    error,
+    setError,
+    dietaryPreference,
+    setDietaryPreference,
     analyzeImage,
     generateRecipe,
     getRecipeSuggestions,
@@ -153,6 +179,8 @@ export const RecipeProvider = ({ children }) => {
   };
 
   return (
-    <RecipeContext.Provider value={value}>{children}</RecipeContext.Provider>
+    <RecipeContext.Provider value={value}>
+      {children}
+    </RecipeContext.Provider>
   );
 };
