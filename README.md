@@ -10,7 +10,7 @@ Transform ingredients into delicious meals with the power of Artificial Intellig
   <img src="https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=white" />
   <img src="https://img.shields.io/badge/Node.js-Express-339933?style=for-the-badge&logo=node.js&logoColor=white" />
   <img src="https://img.shields.io/badge/MongoDB-Database-47A248?style=for-the-badge&logo=mongodb&logoColor=white" />
-  <img src="https://img.shields.io/badge/Google-Gemini_AI-4285F4?style=for-the-badge&logo=google&logoColor=white" />
+  <img src="https://img.shields.io/badge/Groq-AI-black?style=for-the-badge" />
 </p>
 
 <p align="center">
@@ -23,7 +23,7 @@ Transform ingredients into delicious meals with the power of Artificial Intellig
 
 **Smart Chef** is an AI-powered recipe generation platform that helps users create delicious recipes from ingredients they already have.
 
-Simply upload an image of ingredients or food items, and Smart Chef uses **Google Gemini AI** to identify ingredients, generate personalized recipes, provide nutritional insights, and recommend meal ideas tailored to dietary preferences.
+Simply upload an image of ingredients or food items, and Smart Chef uses **Groq-powered Large Language Models (LLMs)** to identify ingredients, generate personalized recipes, provide nutritional insights, and recommend meal ideas tailored to dietary preferences.
 
 ---
 
@@ -77,24 +77,6 @@ Supports:
 
 ---
 
-## 🖼️ Application Flow
-
-```text
-Upload Image
-      ↓
-AI Detects Ingredients
-      ↓
-Select Dietary Preference
-      ↓
-Generate Recipe
-      ↓
-View Instructions & Nutrition
-      ↓
-Save Recipe
-```
-
----
-
 ## 🏗️ Tech Stack
 
 ### Frontend
@@ -118,67 +100,11 @@ Save Recipe
 
 ### Artificial Intelligence
 
-* Google Gemini AI
-
----
-
-## 📂 Project Structure
-
-```bash
-ai-recipe-generator/
-│
-├── client/
-│   ├── src/
-│   │   ├── assets/
-│   │   ├── components/
-│   │   ├── context/
-│   │   ├── hooks/
-│   │   ├── pages/
-│   │   ├── App.jsx
-│   │   ├── main.jsx
-│   │   └── index.css
-│   │
-│   ├── public/
-│   └── package.json
-│
-├── server/
-│   ├── config/
-│   ├── controllers/
-│   ├── middleware/
-│   ├── models/
-│   ├── routes/
-│   └── package.json
-│
-└── README.md
-```
-
----
-
-## ⚙️ Installation
-
-### Clone the Repository
-
-```bash
-git clone https://github.com/shubha229/ai-recipe-generator.git
-
-cd ai-recipe-generator
-```
-
-### Install Frontend Dependencies
-
-```bash
-cd client
-
-npm install
-```
-
-### Install Backend Dependencies
-
-```bash
-cd ../server
-
-npm install
-```
+* Groq API
+* Llama Models
+* AI-powered Recipe Generation
+* Ingredient Analysis
+* Nutrition & Meal Suggestions
 
 ---
 
@@ -191,91 +117,8 @@ PORT=5000
 
 MONGODB_URI=your_mongodb_connection_string
 
-GEMINI_API_KEY=your_gemini_api_key
+GROQ_API_KEY=your_groq_api_key
 ```
-
----
-
-## ▶️ Run Locally
-
-### Start Backend Server
-
-```bash
-cd server
-
-npm start
-```
-
-### Start Frontend Application
-
-```bash
-cd client
-
-npm run dev
-```
-
----
-
-## 🌐 Local Development
-
-| Service  | URL                   |
-| -------- | --------------------- |
-| Frontend | http://localhost:5173 |
-| Backend  | http://localhost:5000 |
-
----
-
-## 📸 User Workflow
-
-1. Upload an ingredient image
-2. AI identifies ingredients automatically
-3. Modify ingredients if required
-4. Choose dietary preferences
-5. Generate a personalized recipe
-6. View cooking instructions and nutrition details
-7. Save favorite recipes
-
----
-
-## 🚀 Future Enhancements
-
-* 🎙️ Voice-Based Cooking Assistant
-* 🛒 Smart Grocery List Generator
-* 📅 Weekly Meal Planning
-* 👤 User Authentication & Profiles
-* 🌍 Multi-Language Support
-* ⭐ Community Ratings & Reviews
-* 🌙 Dark / Light Mode Toggle
-* 📱 Progressive Web App (PWA)
-* 🔗 Recipe Sharing
-
----
-
-## 🔒 Security
-
-* Environment variables protected via `.env`
-* Sensitive credentials excluded using `.gitignore`
-* API keys stored securely on the server
-* MongoDB credentials never exposed publicly
-
----
-
-## 🤝 Contributing
-
-Contributions are always welcome.
-
-```bash
-# Create a feature branch
-git checkout -b feature/new-feature
-
-# Commit changes
-git commit -m "Add awesome feature"
-
-# Push changes
-git push origin feature/new-feature
-```
-
-Then open a Pull Request.
 
 ---
 
@@ -283,7 +126,7 @@ Then open a Pull Request.
 
 ### Shubha
 
-Built with ❤️ using React, Node.js, MongoDB, and Google Gemini AI.
+Built with ❤️ using React, Node.js, MongoDB, Groq API, and modern AI technologies.
 
 ---
 
