@@ -17,10 +17,13 @@ Transform ingredients into delicious meals with the power of Artificial Intellig
   <strong>Upload • Detect • Generate • Cook</strong>
 </p>
 
-<p align="center">
-  🚀 <strong>Live Demo:</strong><br>
-  <a href="https://shubha229.github.io/ai-recipe-generator/">View Smart Chef</a>
-</p>
+---
+
+## 🔗 Live Demo
+
+🌐 Frontend: https://shubha229.github.io/ai-recipe-generator/
+
+⚙️ Backend API: https://smart-chef-backend-526n.onrender.com
 
 ---
 
