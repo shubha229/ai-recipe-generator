@@ -22,7 +22,7 @@ export const RecipeProvider = ({ children }) => {
 
   // Render Backend URL
   const API_BASE =
-    "https://smart-chef-backend-526n.onrender.com/api/recipes";
+    "https://smart-chef-backend-eeqg.onrender.com/";
 
   const analyzeImage = useCallback(async (imageFile) => {
     setLoading(true);
