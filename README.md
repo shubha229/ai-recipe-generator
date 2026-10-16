@@ -23,7 +23,7 @@ Transform ingredients into delicious meals with the power of Artificial Intellig
 
 🌐 Frontend: https://shubha229.github.io/ai-recipe-generator/
 
-⚙️ Backend API: https://smart-chef-backend-526n.onrender.com
+⚙️ Backend API: https://smart-chef-backend-eeqg.onrender.com/
 
 ---
 
