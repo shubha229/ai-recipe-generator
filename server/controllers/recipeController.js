@@ -14,7 +14,7 @@ const analyzeImage = async (req, res) => {
 
     // STEP B: Call Groq Vision (LLaMA 4 Scout)
     const response = await groq.chat.completions.create({
-      "model": "llama-3.3-70b-versatile",
+      model: "qwen/qwen3.8-27b",
       messages: [
         {
           role: "user",
